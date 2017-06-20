@@ -40,6 +40,10 @@
   ],
   "author": "Jon <jon@jgubman.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgubman/videojs-theater-mode"
+  },
   "vjsstandard": {
     "ignore": [
       "dist",
