@@ -1,0 +1,80 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/7.3.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'owner',
+1 verbose cli   'ls',
+1 verbose cli   'videojs-theater-mode' ]
+2 info using npm@3.10.10
+3 info using node@v7.3.0
+4 silly mapToRegistry name videojs-theater-mode
+5 silly mapToRegistry using default registry
+6 silly mapToRegistry registry https://registry.npmjs.org/
+7 silly mapToRegistry data Result {
+7 silly mapToRegistry   raw: 'videojs-theater-mode',
+7 silly mapToRegistry   scope: null,
+7 silly mapToRegistry   escapedName: 'videojs-theater-mode',
+7 silly mapToRegistry   name: 'videojs-theater-mode',
+7 silly mapToRegistry   rawSpec: '',
+7 silly mapToRegistry   spec: 'latest',
+7 silly mapToRegistry   type: 'tag' }
+8 silly mapToRegistry uri https://registry.npmjs.org/videojs-theater-mode
+9 verbose request uri https://registry.npmjs.org/videojs-theater-mode
+10 verbose request no auth needed
+11 info attempt registry request try #1 at 3:22:21 PM
+12 verbose request id d406910b3b628dae
+13 http request GET https://registry.npmjs.org/videojs-theater-mode
+14 http 404 https://registry.npmjs.org/videojs-theater-mode
+15 verbose headers { 'content-type': 'application/json',
+15 verbose headers   'cache-control': 'max-age=0',
+15 verbose headers   'content-length': '2',
+15 verbose headers   'accept-ranges': 'bytes',
+15 verbose headers   date: 'Tue, 20 Jun 2017 22:22:22 GMT',
+15 verbose headers   via: '1.1 varnish',
+15 verbose headers   age: '0',
+15 verbose headers   connection: 'keep-alive',
+15 verbose headers   'x-served-by': 'cache-sjc3139-SJC',
+15 verbose headers   'x-cache': 'MISS',
+15 verbose headers   'x-cache-hits': '0',
+15 verbose headers   'x-timer': 'S1497997342.009611,VS0,VE701',
+15 verbose headers   vary: 'Accept-Encoding' }
+16 silly get cb [ 404,
+16 silly get   { 'content-type': 'application/json',
+16 silly get     'cache-control': 'max-age=0',
+16 silly get     'content-length': '2',
+16 silly get     'accept-ranges': 'bytes',
+16 silly get     date: 'Tue, 20 Jun 2017 22:22:22 GMT',
+16 silly get     via: '1.1 varnish',
+16 silly get     age: '0',
+16 silly get     connection: 'keep-alive',
+16 silly get     'x-served-by': 'cache-sjc3139-SJC',
+16 silly get     'x-cache': 'MISS',
+16 silly get     'x-cache-hits': '0',
+16 silly get     'x-timer': 'S1497997342.009611,VS0,VE701',
+16 silly get     vary: 'Accept-Encoding' } ]
+17 error owner ls Couldn't get owner data videojs-theater-mode
+18 verbose stack Error: Registry returned 404 for GET on https://registry.npmjs.org/videojs-theater-mode
+18 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+18 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:280:14)
+18 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:210:14)
+18 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:187:22)
+18 verbose stack     at emitTwo (events.js:106:13)
+18 verbose stack     at Request.emit (events.js:191:7)
+18 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1048:10)
+18 verbose stack     at emitOne (events.js:96:13)
+18 verbose stack     at Request.emit (events.js:188:7)
+18 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:969:12)
+19 verbose statusCode 404
+20 verbose pkgid videojs-theater-mode
+21 verbose cwd /Users/jgubman/Sites/videojs-theater-mode
+22 error Darwin 16.6.0
+23 error argv "/usr/local/Cellar/node/7.3.0/bin/node" "/usr/local/bin/npm" "owner" "ls" "videojs-theater-mode"
+24 error node v7.3.0
+25 error npm  v3.10.10
+26 error code E404
+27 error 404 Registry returned 404 for GET on https://registry.npmjs.org/videojs-theater-mode
+28 error 404
+29 error 404 'videojs-theater-mode' is not in the npm registry.
+30 error 404 You should bug the author to publish it (or use the name yourself!)
+31 error 404 Note that you can also install from a
+32 error 404 tarball, folder, http url, or git url.
+33 verbose exit [ 1, true ]
