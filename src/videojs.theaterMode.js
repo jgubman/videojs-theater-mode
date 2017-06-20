@@ -22,15 +22,16 @@ class TheaterModeToggle extends Button {
   }
   handleClick() {
     let el = document.getElementById(this.options_.elementToToggle);
-    el.toggleClass('theater-mode');
-    alert('clikd')
+    el.classList.toggle('theater-mode');
   }
 }
+
+videojs.registerComponent('TheaterModeToggle', TheaterModeToggle);
 
 const onPlayerReady = (player, options) => {
   player.addClass('vjs-theater-mode');
 
-  let toggle = player.controlBar.addChild('theaterModeToggle', { element: options.elementToToggle });
+  let toggle = player.controlBar.addChild('theaterModeToggle', { elementToToggle: options.elementToToggle });
   player.controlBar.el().insertBefore(toggle.el(), player.controlBar.fullscreenToggle.el());
 };
 
@@ -41,7 +42,7 @@ const onPlayerReady = (player, options) => {
  */
 const theaterMode = function(options) {
   this.ready(() => {
-    onPlayerReady(this, videojs.mergeOptions(defaults, options));
+    onPlayerReady(this, options);
   });
 };
 

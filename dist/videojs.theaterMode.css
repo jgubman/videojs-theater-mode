@@ -1,0 +1,5 @@
+@font-face { font-family: 'videojs-theaterMode'; src: url("fonts/expand.eot"); src: url("fonts/expand.eot?#iefix") format("embedded-opentype"), url("fonts/expand.ttf") format("truetype"), url("fonts/expand.woff") format("woff"), url("fonts/expand.svg") format("svg"); font-weight: normal; font-style: normal; }
+
+.vjs-theater-mode-control { font-family: 'videojs-theaterMode'; float: right; cursor: pointer; }
+
+.vjs-theater-mode-control:before { content: "\e98b"; }
