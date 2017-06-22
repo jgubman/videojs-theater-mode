@@ -89,10 +89,10 @@ var _videoJs2 = _interopRequireDefault(_videoJs);
 var _packageJson = require('../package.json');
 
 var Button = _videoJs2['default'].getComponent('Button');
+var defaults = { className: 'theater-mode' };
 
 // Cross-compatibility for Video.js 5 and 6.
 var registerPlugin = _videoJs2['default'].registerPlugin || _videoJs2['default'].plugin;
-// const dom = videojs.dom || videojs;
 
 /**
  * Button to add a class to passed in element that will toggle "theater mode" as defined
@@ -112,13 +112,25 @@ var TheaterModeToggle = (function (_Button) {
   _createClass(TheaterModeToggle, [{
     key: 'buildCSSClass',
     value: function buildCSSClass() {
-      return 'vjs-theater-mode-control ' + _get(Object.getPrototypeOf(TheaterModeToggle.prototype), 'buildCSSClass', this).call(this);
+      if (document.getElementById(this.options_.elementToToggle).classList.contains(this.options_.className)) {
+        return 'vjs-theater-mode-control-close ' + _get(Object.getPrototypeOf(TheaterModeToggle.prototype), 'buildCSSClass', this).call(this);
+      } else {
+        return 'vjs-theater-mode-control-open ' + _get(Object.getPrototypeOf(TheaterModeToggle.prototype), 'buildCSSClass', this).call(this);
+      }
     }
   }, {
     key: 'handleClick',
     value: function handleClick() {
-      var el = document.getElementById(this.options_.elementToToggle);
-      el.classList.toggle('theater-mode');
+      var theaterModeIsOn = document.getElementById(this.options_.elementToToggle).classList.toggle(this.options_.className);
+      this.player().trigger('theaterMode', { 'theaterModeIsOn': theaterModeIsOn });
+
+      if (theaterModeIsOn) {
+        this.el_.classList.remove('vjs-theater-mode-control-open');
+        this.el_.classList.add('vjs-theater-mode-control-close');
+      } else {
+        this.el_.classList.remove('vjs-theater-mode-control-close');
+        this.el_.classList.add('vjs-theater-mode-control-open');
+      }
     }
   }]);
 
@@ -130,7 +142,7 @@ _videoJs2['default'].registerComponent('TheaterModeToggle', TheaterModeToggle);
 var onPlayerReady = function onPlayerReady(player, options) {
   player.addClass('vjs-theater-mode');
 
-  var toggle = player.controlBar.addChild('theaterModeToggle', { elementToToggle: options.elementToToggle });
+  var toggle = player.controlBar.addChild('theaterModeToggle', options);
   player.controlBar.el().insertBefore(toggle.el(), player.controlBar.fullscreenToggle.el());
 };
 
@@ -143,7 +155,7 @@ var theaterMode = function theaterMode(options) {
   var _this = this;
 
   this.ready(function () {
-    onPlayerReady(_this, options);
+    onPlayerReady(_this, _videoJs2['default'].mergeOptions(defaults, options));
   });
 };
 
