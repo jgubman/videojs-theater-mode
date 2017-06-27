@@ -48,7 +48,7 @@ require('videojs-theater-mode');
 
 var player = videojs('my-video');
 
-player.theaterMode({ elementToToggle: 'page });
+player.theaterMode({ elementToToggle: 'page' });
 
 player.on('theaterMode', function(elm, data) {
   if (data.theaterModeIsOn) {
@@ -66,7 +66,7 @@ When using with RequireJS (or another AMD library), get the script in whatever w
 ```js
 require(['video.js', 'videojs-theater-mode'], function(videojs) {
   var player = videojs('my-video');
-  player.theaterMode({ elementToToggle: 'page });
+  player.theaterMode({ elementToToggle: 'page' });
 
   player.on('theaterMode', function(elm, data) {
     if (data.theaterModeIsOn) {
