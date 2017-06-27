@@ -1,6 +1,6 @@
 # videojs-theater-mode
 
-Adds a class the video.js container that can be used to put your video into &#34;theater mode&#34;
+Button that adds a configurable class to a configured DOM element that can be used to put your video into &#34;theater mode&#34;
 
 ## Installation
 
@@ -10,7 +10,7 @@ npm install --save videojs-theater-mode
 
 ## Usage
 
-To include videojs-theater-mode on your website or web application, use any of the following methods. After including the script, have the player listen for the 'theaterMode' trigger and respond to the theaterModeIsOn: true/false object any way you'd like.
+To include videojs-theater-mode on your website or web application, use any of the following methods. After pushing the button, the options.className will be toggled on whatever DOM element you defined in options.elementToToggle. Also, the player will fire the 'theaterMode' trigger and you can respond to the theaterModeIsOn: true/false object any way you'd like.
 
 ### `<script>` Tag
 
@@ -22,13 +22,13 @@ This is the simplest case. Get the script in whatever way you prefer and include
 <script>
   var player = videojs('my-video');
 
-  player.theaterMode({ elementToToggle: 'page');
+  player.theaterMode({ elementToToggle: 'page', className: 'theater-mode' });
 
   player.on('theaterMode', function(elm, data) {
     if (data.theaterModeIsOn) {
-      $('#page').turnOnTheaterMode(); // or whatever
+      // do something
     } else {
-      $('#page').turnOffTheaterMode();
+      // do something else
     }
   });
 </script>
@@ -52,9 +52,9 @@ player.theaterMode({ elementToToggle: 'page' });
 
 player.on('theaterMode', function(elm, data) {
   if (data.theaterModeIsOn) {
-    $('#page').turnOnTheaterMode(); // or whatever
+    // do something
   } else {
-    $('#page').turnOffTheaterMode();
+    // do something else
   }
 });
 ```
@@ -70,9 +70,9 @@ require(['video.js', 'videojs-theater-mode'], function(videojs) {
 
   player.on('theaterMode', function(elm, data) {
     if (data.theaterModeIsOn) {
-      $('#page').turnOnTheaterMode(); // or whatever
+      // do something
     } else {
-      $('#page').turnOffTheaterMode();
+      // do something else
     }
   });
 
