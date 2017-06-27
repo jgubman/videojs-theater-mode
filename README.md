@@ -10,7 +10,7 @@ npm install --save videojs-theater-mode
 
 ## Usage
 
-To include videojs-theater-mode on your website or web application, use any of the following methods.
+To include videojs-theater-mode on your website or web application, use any of the following methods. After including the script, have the player listen for the 'theaterMode' trigger and respond to the theaterModeIsOn: true/false object any way you'd like.
 
 ### `<script>` Tag
 
@@ -22,7 +22,15 @@ This is the simplest case. Get the script in whatever way you prefer and include
 <script>
   var player = videojs('my-video');
 
-  player.theaterMode();
+  player.theaterMode({ elementToToggle: 'page');
+
+  player.on('theaterMode', function(elm, data) {
+    if (data.theaterModeIsOn) {
+      $('#page').turnOnTheaterMode(); // or whatever
+    } else {
+      $('#page').turnOffTheaterMode();
+    }
+  });
 </script>
 ```
 
@@ -40,7 +48,15 @@ require('videojs-theater-mode');
 
 var player = videojs('my-video');
 
-player.theaterMode();
+player.theaterMode({ elementToToggle: 'page });
+
+player.on('theaterMode', function(elm, data) {
+  if (data.theaterModeIsOn) {
+    $('#page').turnOnTheaterMode(); // or whatever
+  } else {
+    $('#page').turnOffTheaterMode();
+  }
+});
 ```
 
 ### RequireJS/AMD
@@ -50,8 +66,16 @@ When using with RequireJS (or another AMD library), get the script in whatever w
 ```js
 require(['video.js', 'videojs-theater-mode'], function(videojs) {
   var player = videojs('my-video');
+  player.theaterMode({ elementToToggle: 'page });
 
-  player.theaterMode();
+  player.on('theaterMode', function(elm, data) {
+    if (data.theaterModeIsOn) {
+      $('#page').turnOnTheaterMode(); // or whatever
+    } else {
+      $('#page').turnOffTheaterMode();
+    }
+  });
+
 });
 ```
 

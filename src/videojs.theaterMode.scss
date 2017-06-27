@@ -21,9 +21,14 @@ $icon-font-path: 'fonts' !default;
   cursor: pointer;
 }
 
-.vjs-theater-mode-control-close:before {
-  content: "\e900";
-}
-.vjs-theater-mode-control-open:before {
+.video-js .vjs-theater-mode-control-open.vjs-control:before {
   content: "\e901";
+  font-size: 1.1em;
+  line-height: 2.9em;
+}
+
+.video-js .vjs-theater-mode-control-close.vjs-control:before {
+  content: "\e900";
+  font-size: 1.4em;
+  line-height: 2.2em;
 }

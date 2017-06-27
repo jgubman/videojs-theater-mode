@@ -2,6 +2,6 @@
 
 .vjs-theater-mode-control-open, .vjs-theater-mode-control-close { font-family: 'videojs-theaterMode'; float: right; cursor: pointer; }
 
-.vjs-theater-mode-control-close:before { content: "\e900"; }
+.video-js .vjs-theater-mode-control-open.vjs-control:before { content: "\e901"; font-size: 1.1em; line-height: 2.9em; }
 
-.vjs-theater-mode-control-open:before { content: "\e901"; }
+.video-js .vjs-theater-mode-control-close.vjs-control:before { content: "\e900"; font-size: 1.4em; line-height: 2.2em; }
