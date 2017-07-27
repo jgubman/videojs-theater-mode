@@ -3,6 +3,7 @@ import {version as VERSION} from '../package.json';
 
 const Button = videojs.getComponent('Button');
 const defaults = { className: 'theater-mode' };
+const componentName = 'theaterModeToggle';
 
 // Cross-compatibility for Video.js 5 and 6.
 const registerPlugin = videojs.registerPlugin || videojs.plugin;
@@ -45,7 +46,7 @@ videojs.registerComponent('TheaterModeToggle', TheaterModeToggle);
 const onPlayerReady = (player, options) => {
   player.addClass('vjs-theater-mode');
 
-  let toggle = player.controlBar.addChild('theaterModeToggle', options);
+  let toggle = player.controlBar.addChild(componentName, options);
   player.controlBar.el().insertBefore(toggle.el(), player.controlBar.fullscreenToggle.el());
 };
 
@@ -57,6 +58,14 @@ const onPlayerReady = (player, options) => {
 const theaterMode = function(options) {
   this.ready(() => {
     onPlayerReady(this, videojs.mergeOptions(defaults, options));
+  });
+
+  this.on('fullscreenchange', (event) => {
+    if (this.isFullscreen()) {
+      this.controlBar.getChild(componentName).hide();
+    } else {
+      this.controlBar.getChild(componentName).show();
+    }
   });
 };
 

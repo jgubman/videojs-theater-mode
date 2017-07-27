@@ -1,7 +1,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports={
   "name": "videojs-theater-mode",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "Adds a class the video.js container that can be used to put your video into \"theater mode\"",
   "main": "dist/videojs-theater-mode.cjs.js",
   "module": "dist/videojs-theater-mode.es.js",
@@ -90,6 +90,7 @@ var _packageJson = require('../package.json');
 
 var Button = _videoJs2['default'].getComponent('Button');
 var defaults = { className: 'theater-mode' };
+var componentName = 'theaterModeToggle';
 
 // Cross-compatibility for Video.js 5 and 6.
 var registerPlugin = _videoJs2['default'].registerPlugin || _videoJs2['default'].plugin;
@@ -142,7 +143,7 @@ _videoJs2['default'].registerComponent('TheaterModeToggle', TheaterModeToggle);
 var onPlayerReady = function onPlayerReady(player, options) {
   player.addClass('vjs-theater-mode');
 
-  var toggle = player.controlBar.addChild('theaterModeToggle', options);
+  var toggle = player.controlBar.addChild(componentName, options);
   player.controlBar.el().insertBefore(toggle.el(), player.controlBar.fullscreenToggle.el());
 };
 
@@ -156,6 +157,14 @@ var theaterMode = function theaterMode(options) {
 
   this.ready(function () {
     onPlayerReady(_this, _videoJs2['default'].mergeOptions(defaults, options));
+  });
+
+  this.on('fullscreenchange', function (event) {
+    if (_this.isFullscreen()) {
+      _this.controlBar.getChild(componentName).hide();
+    } else {
+      _this.controlBar.getChild(componentName).show();
+    }
   });
 };
 
